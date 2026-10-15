@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <style>:root {--outline: #62666B; --green: #438955;}
+    @media (prefers-color-scheme: dark) {:root {--outline: #A4A7AD; --green: #75CE92;}}</style>
+  <rect x="3" y="3" width="26" height="26" fill="none" stroke="var(--outline)" stroke-width="1.5"/>
+  <path d="M 7 16 H 25 M 18 9 L 25 16 L 18 23" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

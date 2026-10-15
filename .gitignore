@@ -1,0 +1,15 @@
+.DS_Store
+/.build/
+/.swiftpm/
+/build/
+/dist/
+/private/
+/docs/
+/Tests/
+/Examples/
+/*_RESULTS.json
+/scripts/check-*.py
+__pycache__/
+*.pyc
+*.md
+!/README.md

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <style>:root {--outline: #62666B; --blue: #283C71;}
+    @media (prefers-color-scheme: dark) {:root {--outline: #A4A7AD; --blue: #A4BFF3;}}</style>
+  <rect x="3" y="3" width="26" height="26" fill="none" stroke="var(--outline)" stroke-width="1.5"/>
+  <path d="M 5 11 H 10 V 12 H 9 L 11 15 L 13 12 H 12 V 11 H 17 V 12 H 15 L 12 17 L 15 21 H 17 V 22 H 12 V 21 H 13 L 11 18 L 9 21 H 10 V 22 H 5 V 21 H 7 L 10 16 L 7 12 H 5 Z" fill="var(--blue)" stroke="none" stroke-width="1.5"/>
+  <rect x="19" y="12" width="8" height="2.5" fill="var(--blue)" stroke="none" stroke-width="1.5"/>
+  <rect x="19" y="18" width="8" height="2.5" fill="var(--blue)" stroke="none" stroke-width="1.5"/>
+</svg>

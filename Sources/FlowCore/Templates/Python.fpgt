@@ -1,0 +1,500 @@
+[Language]
+Name = Python
+Extension = py
+Indent = 4
+Keywords = class, def, return, for, if, while, int, float, double, long, boolean, bool, true, false, public, static, void, main, import, std
+Conflicts = fgInput, fgIn, fgOut, fgRandom, fgText, fgBool, fgFixed, fgX, fgY, fgAngle, fgColor, fgLines, fgSVG, fgForward, fgHome, fgEOF, draw
+Options = 
+
+[Types]
+Integer = int
+Real = float
+Boolean = bool
+String = str
+None = None
+
+[Function ID]
+Convention = camel
+Normal = {name}
+Conflict = user_{name}
+
+[Variable ID]
+Convention = camel
+Normal = {name}
+Conflict = user_{name}
+
+[String Literal]
+Text = "{characters}"
+Replace Char 1 = "
+Replace By 1 = \"
+Replace Char 2 = \
+Replace By 2 = \\
+
+[Integer Literal]
+Text = {integral}
+
+[Real Literal]
+Text = {integral}.{fractional}
+
+[Boolean Literal]
+true = True
+false = False
+
+[Variable Access]
+Precedence = 100
+Text = {name} | ~subscript
+ = {name}[int({subscript})] | subscript
+
+[Or]
+Precedence = 1
+Needed 1 = 1
+Needed 2 = 2
+Text = {1} {pipe} {2}
+
+[And]
+Precedence = 2
+Needed 1 = 2
+Needed 2 = 3
+Text = {1} & {2}
+
+[Equals]
+Precedence = 4
+Needed 1 = 4
+Needed 2 = 5
+Text = {1} == {2}
+
+[Not Equals]
+Precedence = 4
+Needed 1 = 4
+Needed 2 = 5
+Text = {1} != {2}
+
+[Less Than]
+Precedence = 4
+Needed 1 = 4
+Needed 2 = 5
+Text = {1} < {2}
+
+[Less Equal Than]
+Precedence = 4
+Needed 1 = 4
+Needed 2 = 5
+Text = {1} <= {2}
+
+[Greater Than]
+Precedence = 4
+Needed 1 = 4
+Needed 2 = 5
+Text = {1} > {2}
+
+[Greater Equal Than]
+Precedence = 4
+Needed 1 = 4
+Needed 2 = 5
+Text = {1} >= {2}
+
+[Add]
+Precedence = 5
+Needed 1 = 5
+Needed 2 = 6
+Text = {1} + {2}
+
+[Subtract]
+Precedence = 5
+Needed 1 = 5
+Needed 2 = 6
+Text = {1} - {2}
+
+[Multiply]
+Precedence = 6
+Needed 1 = 6
+Needed 2 = 7
+Text = {1} * {2}
+
+[Divide]
+Precedence = 6
+Needed 1 = 6
+Needed 2 = 7
+Text = {1} / {2}
+Cast 1 = real | integer-integer
+
+[Modulus]
+Precedence = 6
+Needed 1 = 6
+Needed 2 = 7
+Text = {1} % {2}
+
+[Concatenate]
+Precedence = 100
+Text = fgText({1}) + fgText({2})
+Type = string
+
+[Power]
+Precedence = 100
+Text = ({1} ** {2})
+
+[Not]
+Precedence = 7
+Needed 1 = 8
+Text = not {1}
+
+[Negate]
+Precedence = 7
+Needed 1 = 8
+Text = -{1}
+
+[Cast]
+Precedence = 100
+Needed = 0
+Text = float({expression}) | integer-to-real
+ = fgText({expression}) | integer-to-string
+ = bool({expression}) | integer-to-boolean
+ = int({expression}) | real-to-integer
+ = fgText({expression}) | real-to-string
+ = bool({expression}) | real-to-boolean
+ = int({expression}) | string-to-integer
+ = float({expression}) | string-to-real
+ = fgBool({expression}) | string-to-boolean
+ = int({expression}) | boolean-to-integer
+ = float({expression}) | boolean-to-real
+ = fgText({expression}) | boolean-to-string
+
+[Abs]
+Precedence = 100
+Text = math.fabs({1})
+
+[Sqrt]
+Precedence = 100
+Text = math.sqrt({1})
+
+[Sin]
+Precedence = 100
+Text = math.sin({1})
+
+[Cos]
+Precedence = 100
+Text = math.cos({1})
+
+[Tan]
+Precedence = 100
+Text = math.tan({1})
+
+[ArcSin]
+Precedence = 100
+Text = math.asin({1})
+
+[ArcCos]
+Precedence = 100
+Text = math.acos({1})
+
+[ArcTan]
+Precedence = 100
+Text = math.atan({1})
+
+[Log]
+Precedence = 100
+Text = math.log({1})
+
+[Log10]
+Precedence = 100
+Text = math.log10({1})
+
+[Sinh]
+Precedence = 100
+Text = math.sinh({1})
+
+[Cosh]
+Precedence = 100
+Text = math.cosh({1})
+
+[Tanh]
+Precedence = 100
+Text = math.tanh({1})
+
+[Floor]
+Precedence = 100
+Text = math.floor({1})
+
+[Ceil]
+Precedence = 100
+Text = math.ceil({1})
+
+[Exp]
+Precedence = 100
+Text = math.exp({1})
+
+[ArcSinh]
+Precedence = 100
+Text = math.asinh({1})
+
+[ArcCosh]
+Precedence = 100
+Text = math.acosh({1})
+
+[ArcTanh]
+Precedence = 100
+Text = math.atanh({1})
+
+[Pi]
+Precedence = 100
+Text = math.pi
+Needed 1 = 100
+Needed 2 = 0
+
+[LF]
+Precedence = 100
+Text = "\n"
+Needed 1 = 100
+Needed 2 = 0
+
+[Len]
+Precedence = 100
+Text = (len({1}.encode("utf-16-le")) // 2)
+Needed 1 = 100
+Needed 2 = 0
+
+[Size]
+Precedence = 100
+Text = len({1})
+Needed 1 = 100
+Needed 2 = 0
+
+[Char]
+Precedence = 100
+Text = ({1}.encode("utf-16-le")[int({2}) * 2:int({2}) * 2 + 2].decode("utf-16-le"))
+Needed 1 = 100
+Needed 2 = 0
+
+[ToChar]
+Precedence = 100
+Text = chr(int({1}))
+Needed 1 = 100
+Needed 2 = 0
+
+[ToCode]
+Precedence = 100
+Text = ord({1}[0])
+Needed 1 = 100
+Needed 2 = 0
+
+[Int]
+Precedence = 100
+Text = int({1})
+Needed 1 = 100
+Needed 2 = 0
+
+[ToInteger]
+Precedence = 100
+Text = int(float({1}))
+Needed 1 = 100
+Needed 2 = 0
+
+[ToReal]
+Precedence = 100
+Text = float({1})
+Needed 1 = 100
+Needed 2 = 0
+
+[ToString]
+Precedence = 100
+Text = fgText({1})
+Needed 1 = 100
+Needed 2 = 0
+
+[ToFixed]
+Precedence = 100
+Text = format({1}, "." + str(int({2})) + "f")
+Needed 1 = 100
+Needed 2 = 0
+
+[Sgn]
+Precedence = 100
+Text = (({1} > 0) - ({1} < 0))
+Needed 1 = 100
+Needed 2 = 0
+
+[Random]
+Precedence = 100
+Text = random.randrange(int({1}))
+Needed 1 = 100
+Needed 2 = 0
+
+[EOF]
+Precedence = 100
+Text = fgEOF()
+Needed 1 = 100
+Needed 2 = 0
+
+[TurtleX]
+Precedence = 100
+Text = draw.xcor()
+Needed 1 = 100
+Needed 2 = 0
+
+[TurtleY]
+Precedence = 100
+Text = draw.ycor()
+Needed 1 = 100
+Needed 2 = 0
+
+[Function Call]
+Precedence = 100
+Text = {name}({arguments})
+
+[Argument]
+Separator = ,{space}
+Text = {expression}
+Cast = integer | real, integer-parameter
+ = real | integer, real-parameter
+
+[Program]
+Text = import math
+ = import random
+ = 
+ = def fgBool(value):
+ = if value.lower() not in ("true", "false"): | | 1
+ = raise ValueError("Enter True or False") | | 2
+ = return value.lower() == "true" | | 1
+ = 
+ = def fgText(value):
+ = if isinstance(value, bool): | | 1
+ = return "True" if value else "False" | | 2
+ = if isinstance(value, float) and value.is_integer(): | | 1
+ = return str(int(value)) | | 2
+ = return str(value) | | 1
+ = 
+ = fgIn = None
+ = fgOut = None
+ = 
+ = def fgEOF():
+ = if fgIn is None or fgIn.closed: | | 1
+ = return True | | 2
+ = position = fgIn.tell() | | 1
+ = result = fgIn.read(1) == "" | | 1
+ = fgIn.seek(position) | | 1
+ = return result | | 1
+ = import turtle | turtle
+ = draw = turtle.Turtle() | turtle
+ = draw.setheading(90) | turtle
+ = -->FUNCTIONS
+ = -->MAIN
+ = 
+ = if __name__ == '__main__':
+ = main() | | 1
+
+[Main]
+Text = def main():
+ = global fgIn, fgOut | read | 1
+ = global fgIn, fgOut | write, ~read | 1
+ = -->BLOCK | | 1
+
+[Parameter]
+Separator = ,{space}
+Text = {name}
+
+[Function]
+Text = 
+ = def {name}({parameters}):
+ = global fgIn, fgOut | read | 1
+ = global fgIn, fgOut | write, ~read | 1
+ = -->BLOCK | | 1
+ = return {return} | return | 1
+
+[Function Header]
+Text = {type} {name}({parameters});
+
+[Empty Block]
+Text = pass
+
+[Assign]
+Text = {variable} = {expression}
+Cast = integer | integer-variable, real-expression
+ = real | real-variable, integer-expression
+
+[Call]
+Text = {name}({arguments})
+
+[Comment]
+Text = # {text}
+
+[Declare]
+Name Mode = singular
+Text = {name} = None | ~array
+ = {name} = [None] * int({size}) | array
+
+[If]
+Text = if {condition}:
+ = -->TRUEBLOCK | | 1
+ = else: | else
+ = -->FALSEBLOCK | else | 1
+
+[While]
+Text = while {condition}:
+ = -->BLOCK | | 1
+
+[Do]
+Text = while True:
+ = -->BLOCK | | 1
+ = if {not condition}: | | 1
+ = break | | 2
+
+[For]
+Text = {variable} = {start}
+ = while {variable} <= {end}: | inc
+ = while {variable} >= {end}: | ~inc
+ = -->BLOCK | | 1
+ = {variable} += {step} | inc | 1
+ = {variable} -= {step} | ~inc | 1
+
+[Input]
+Text = {variable} = int(input()) | integer
+ = {variable} = float(input()) | real
+ = {variable} = fgBool(input()) | boolean
+ = {variable} = input() | string
+
+[Read]
+Text = {variable} = int(fgIn.readline().rstrip("\r\n")) | integer
+ = {variable} = float(fgIn.readline().rstrip("\r\n")) | real
+ = {variable} = fgBool(fgIn.readline().rstrip("\r\n")) | boolean
+ = {variable} = fgIn.readline().rstrip("\r\n") | string
+
+[Output]
+Text = print({expression}) | newline, string
+ = print(fgText({expression})) | newline, ~string
+ = print({expression}, end="") | ~newline, string
+ = print(fgText({expression}), end="") | ~newline, ~string
+
+[Open]
+Text = fgIn = open({expression}, "r", encoding="utf-8-sig") | read
+ = fgOut = open({expression}, "w", encoding="utf-8") | write
+
+[Close]
+Text = fgIn.close() | read
+ = fgOut.close() | write
+
+[Write]
+Text = fgOut.write(fgText({expression}) + "\n")
+= fgOut.flush()
+
+[Forward]
+Text = draw.penup() | up
+ = draw.pendown() | down
+ = draw.forward({expression})
+
+[Turn]
+Text = draw.left({expression}) | left
+ = draw.right({expression}) | right
+
+[Pen]
+Text = draw.pencolor("{color-hex}")
+
+[Home]
+Text = draw.penup()
+ = draw.home()
+ = draw.setheading(90)
+
+[Clear]
+Text = draw.clear()
+ = draw.penup()
+ = draw.home()
+ = draw.setheading(90)

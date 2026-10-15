@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <style>:root {--purple: #F0C8FF; --purple-edge: #90669F;}
+    @media (prefers-color-scheme: dark) {:root {--purple: #794B83; --purple-edge: #CA98D5;}}</style>
+  <rect x="3" y="4" width="26" height="10" rx="5" fill="var(--purple)" stroke="var(--purple-edge)" stroke-width="1.5"/>
+  <rect x="3" y="20" width="26" height="10" rx="5" fill="var(--purple)" stroke="var(--purple-edge)" stroke-width="1.5"/>
+</svg>

@@ -1,0 +1,516 @@
+[Language]
+Name = C++
+Extension = cpp
+Indent = 4
+Keywords = class, def, return, for, if, while, int, float, double, long, boolean, bool, true, false, public, static, void, main, import, std
+Conflicts = fgInput, fgIn, fgOut, fgRandom, fgText, fgBool, fgFixed, fgX, fgY, fgAngle, fgColor, fgLines, fgSVG, fgForward, fgHome, fgEOF, draw
+Options = aligned
+
+[Types]
+Integer = long long
+Real = double
+Boolean = bool
+String = std::string
+None = void
+
+[Function ID]
+Convention = camel
+Normal = {name}
+Conflict = user_{name}
+
+[Variable ID]
+Convention = camel
+Normal = {name}
+Conflict = user_{name}
+
+[String Literal]
+Text = "{characters}"
+Replace Char 1 = "
+Replace By 1 = \"
+Replace Char 2 = \
+Replace By 2 = \\
+
+[Integer Literal]
+Text = {integral}
+
+[Real Literal]
+Text = {integral}.{fractional}
+
+[Boolean Literal]
+true = true
+false = false
+
+[Variable Access]
+Precedence = 100
+Text = {name} | ~subscript
+ = {name}.at({subscript}) | subscript
+
+[Or]
+Precedence = 1
+Needed 1 = 1
+Needed 2 = 2
+Text = {1} {pipe} {2}
+
+[And]
+Precedence = 2
+Needed 1 = 2
+Needed 2 = 3
+Text = {1} & {2}
+
+[Equals]
+Precedence = 4
+Needed 1 = 4
+Needed 2 = 5
+Text = {1} == {2}
+
+[Not Equals]
+Precedence = 4
+Needed 1 = 4
+Needed 2 = 5
+Text = {1} != {2}
+
+[Less Than]
+Precedence = 4
+Needed 1 = 4
+Needed 2 = 5
+Text = {1} < {2}
+
+[Less Equal Than]
+Precedence = 4
+Needed 1 = 4
+Needed 2 = 5
+Text = {1} <= {2}
+
+[Greater Than]
+Precedence = 4
+Needed 1 = 4
+Needed 2 = 5
+Text = {1} > {2}
+
+[Greater Equal Than]
+Precedence = 4
+Needed 1 = 4
+Needed 2 = 5
+Text = {1} >= {2}
+
+[Add]
+Precedence = 5
+Needed 1 = 5
+Needed 2 = 6
+Text = {1} + {2}
+
+[Subtract]
+Precedence = 5
+Needed 1 = 5
+Needed 2 = 6
+Text = {1} - {2}
+
+[Multiply]
+Precedence = 6
+Needed 1 = 6
+Needed 2 = 7
+Text = {1} * {2}
+
+[Divide]
+Precedence = 6
+Needed 1 = 6
+Needed 2 = 7
+Text = {1} / {2}
+Cast 1 = real | integer-integer
+
+[Modulus]
+Precedence = 6
+Needed 1 = 6
+Needed 2 = 7
+Text = std::fmod({1}, {2}) | ~integer-integer
+ = {1} % {2} | integer-integer
+
+[Concatenate]
+Precedence = 100
+Text = fgText({1}) + fgText({2})
+Type = string
+
+[Power]
+Precedence = 100
+Text = std::pow({1}, {2})
+
+[Not]
+Precedence = 7
+Needed 1 = 8
+Text = !{1}
+
+[Negate]
+Precedence = 7
+Needed 1 = 8
+Text = -{1}
+
+[Cast]
+Precedence = 100
+Needed = 0
+Text = static_cast<double>({expression}) | integer-to-real
+ = fgText({expression}) | integer-to-string
+ = static_cast<bool>({expression}) | integer-to-boolean
+ = static_cast<long long>({expression}) | real-to-integer
+ = fgText({expression}) | real-to-string
+ = static_cast<bool>({expression}) | real-to-boolean
+ = std::stoll({expression}) | string-to-integer
+ = std::stod({expression}) | string-to-real
+ = fgBool({expression}) | string-to-boolean
+ = static_cast<long long>({expression}) | boolean-to-integer
+ = static_cast<double>({expression}) | boolean-to-real
+ = fgText({expression}) | boolean-to-string
+
+[Abs]
+Precedence = 100
+Text = std::abs({1})
+
+[Sqrt]
+Precedence = 100
+Text = std::sqrt({1})
+
+[Sin]
+Precedence = 100
+Text = std::sin({1})
+
+[Cos]
+Precedence = 100
+Text = std::cos({1})
+
+[Tan]
+Precedence = 100
+Text = std::tan({1})
+
+[ArcSin]
+Precedence = 100
+Text = std::asin({1})
+
+[ArcCos]
+Precedence = 100
+Text = std::acos({1})
+
+[ArcTan]
+Precedence = 100
+Text = std::atan({1})
+
+[Log]
+Precedence = 100
+Text = std::log({1})
+
+[Log10]
+Precedence = 100
+Text = std::log10({1})
+
+[Sinh]
+Precedence = 100
+Text = std::sinh({1})
+
+[Cosh]
+Precedence = 100
+Text = std::cosh({1})
+
+[Tanh]
+Precedence = 100
+Text = std::tanh({1})
+
+[Floor]
+Precedence = 100
+Text = std::floor({1})
+
+[Ceil]
+Precedence = 100
+Text = std::ceil({1})
+
+[Exp]
+Precedence = 100
+Text = std::exp({1})
+
+[ArcSinh]
+Precedence = 100
+Text = std::asinh({1})
+
+[ArcCosh]
+Precedence = 100
+Text = std::acosh({1})
+
+[ArcTanh]
+Precedence = 100
+Text = std::atanh({1})
+
+[Pi]
+Precedence = 100
+Text = std::acos(-1.0)
+Needed 1 = 100
+Needed 2 = 0
+
+[LF]
+Precedence = 100
+Text = "\n"
+Needed 1 = 100
+Needed 2 = 0
+
+[Len]
+Precedence = 100
+Text = static_cast<long long>(fgUTF16({1}).size())
+Needed 1 = 100
+Needed 2 = 0
+
+[Size]
+Precedence = 100
+Text = static_cast<long long>({1}.size())
+Needed 1 = 100
+Needed 2 = 0
+
+[Char]
+Precedence = 100
+Text = fgUTF8(std::u16string(1, fgUTF16({1}).at({2})))
+Needed 1 = 100
+Needed 2 = 0
+
+[ToChar]
+Precedence = 100
+Text = fgUTF8(std::u16string(1, static_cast<char16_t>({1})))
+Needed 1 = 100
+Needed 2 = 0
+
+[ToCode]
+Precedence = 100
+Text = static_cast<long long>(fgUTF16({1}).at(0))
+Needed 1 = 100
+Needed 2 = 0
+
+[Int]
+Precedence = 100
+Text = static_cast<long long>({1})
+Needed 1 = 100
+Needed 2 = 0
+
+[ToInteger]
+Precedence = 100
+Text = static_cast<long long>(std::stod({1}))
+Needed 1 = 100
+Needed 2 = 0
+
+[ToReal]
+Precedence = 100
+Text = std::stod({1})
+Needed 1 = 100
+Needed 2 = 0
+
+[ToString]
+Precedence = 100
+Text = fgText({1})
+Needed 1 = 100
+Needed 2 = 0
+
+[ToFixed]
+Precedence = 100
+Text = fgFixed({1}, {2})
+Needed 1 = 100
+Needed 2 = 0
+
+[Sgn]
+Precedence = 100
+Text = (({1} > 0) - ({1} < 0))
+Needed 1 = 100
+Needed 2 = 0
+
+[Random]
+Precedence = 100
+Text = std::uniform_int_distribution<long long>(0, ({1}) - 1)(fgRandom)
+Needed 1 = 100
+Needed 2 = 0
+
+[EOF]
+Precedence = 100
+Text = (!fgIn.is_open() {pipe}{pipe} fgIn.peek() == std::char_traits<char>::eof())
+Needed 1 = 100
+Needed 2 = 0
+
+[TurtleX]
+Precedence = 100
+Text = fgX
+Needed 1 = 100
+Needed 2 = 0
+
+[TurtleY]
+Precedence = 100
+Text = (-fgY)
+Needed 1 = 100
+Needed 2 = 0
+
+[Function Call]
+Precedence = 100
+Text = {name}({arguments})
+
+[Argument]
+Separator = ,{space}
+Text = {expression}
+Cast = integer | real, integer-parameter
+ = real | integer, real-parameter
+
+[Program]
+Text = #include <iostream>
+ = #include <string>
+ = #include <vector>
+ = #include <cmath>
+ = #include <fstream>
+ = #include <sstream>
+ = #include <iomanip>
+ = #include <random>
+ = #include <algorithm>
+ = #include <stdexcept>
+ = #include <codecvt>
+ = #include <locale>
+ = std::ifstream fgIn;
+ = std::ofstream fgOut;
+ = std::mt19937 fgRandom(std::random_device{{}());
+ = std::string fgText(const std::string& value) {{ return value; }
+ = std::string fgText(bool value) {{ return value ? "True" : "False"; }
+ = template<class T> std::string fgText(T value) {{ std::ostringstream out; out << std::setprecision(15) << value; return out.str(); }
+ = std::string fgLine(std::istream& stream) {{ std::string value; if (!std::getline(stream, value)) throw std::runtime_error("No input available"); if (!value.empty() && value.back() == '\r') value.pop_back(); return value; }
+ = bool fgBool(std::string value) {{ std::transform(value.begin(), value.end(), value.begin(), ::tolower); if (value != "true" && value != "false") throw std::runtime_error("Enter True or False"); return value == "true"; }
+ = std::string fgFixed(double value, long long digits) {{ std::ostringstream out; out << std::fixed << std::setprecision(static_cast<int>(digits)) << value; return out.str(); }
+ = std::u16string fgUTF16(const std::string& value) {{ return std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t>{{}.from_bytes(value); }
+ = std::string fgUTF8(const std::u16string& value) {{ return std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t>{{}.to_bytes(value); }
+ = double fgX = 0, fgY = 0, fgAngle = 90;
+ = std::string fgColor = "#101010";
+ = std::vector<std::string> fgLines;
+ = void fgSVG() {{
+ = std::ofstream svg("turtle.svg"); | | 1
+ = svg << "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-1000 -1000 2000 2000\">\n"; | | 1
+ = for (const auto& line : fgLines) svg << line << "\n"; | | 1
+ = svg << "</svg>\n"; | | 1
+ = }
+ = void fgForward(double distance, bool pen) {{
+ = double x = std::clamp(fgX + std::cos(fgAngle * std::acos(-1.0) / 180) * distance, -1000000.0, 1000000.0); | | 1
+ = double y = std::clamp(fgY - std::sin(fgAngle * std::acos(-1.0) / 180) * distance, -1000000.0, 1000000.0); | | 1
+ = if (pen) {{ std::ostringstream line; line << "<line x1=\"" << fgX << "\" y1=\"" << fgY << "\" x2=\"" << x << "\" y2=\"" << y << "\" stroke=\"" << fgColor << "\"/>"; fgLines.push_back(line.str()); } | | 1
+ = fgX = x; fgY = y; fgSVG(); | | 1
+ = }
+ = void fgHome() {{ fgX = fgY = 0; fgAngle = 90; }
+ = -->HEADERS
+ = -->MAIN
+ = -->FUNCTIONS
+
+[Main]
+Text = int main() {{ | ~aligned | 
+ = int main() | aligned | 
+ = {{ | aligned | 
+ = -->BLOCK | | 1
+ = return 0; | | 1
+ = }
+
+[Parameter]
+Separator = ,{space}
+Text = {type} {name} | ~array
+ = std::vector<{type}>& {name} | array
+
+[Function]
+Text = 
+ = {type} {name}({parameters}) {{ | ~aligned | 
+ = {type} {name}({parameters}) | aligned | 
+ = {{ | aligned | 
+ = -->BLOCK | | 1
+ = return {return}; | return | 1
+ = }
+
+[Function Header]
+Text = {type} {name}({parameters});
+
+[Assign]
+Text = {variable} = {expression};
+Cast = integer | integer-variable, real-expression
+ = real | real-variable, integer-expression
+
+[Call]
+Text = {name}({arguments});
+
+[Comment]
+Text = // {text}
+
+[Declare]
+Name Mode = singular
+Text = {type} {name}; | ~array
+ = std::vector<{type}> {name}(static_cast<size_t>({size})); | array
+
+[If]
+Text = if ({condition}) {{ | ~aligned | 
+ = if ({condition}) | aligned | 
+ = {{ | aligned | 
+ = -->TRUEBLOCK | | 1
+ = } else {{ | else, ~aligned | 
+ = } | else, aligned | 
+ = else | else, aligned | 
+ = {{ | else, aligned | 
+ = -->FALSEBLOCK | else | 1
+ = }
+
+[While]
+Text = while ({condition}) {{ | ~aligned | 
+ = while ({condition}) | aligned | 
+ = {{ | aligned | 
+ = -->BLOCK | | 1
+ = }
+
+[Do]
+Text = do {{ | ~aligned | 
+ = do | aligned | 
+ = {{ | aligned | 
+ = -->BLOCK | | 1
+ = } while ({condition});
+
+[For]
+Text = for ({variable} = {start}; {variable} <= {end}; {variable} += {step}) {{ | inc, ~aligned | 
+ = for ({variable} = {start}; {variable} <= {end}; {variable} += {step}) | inc, aligned | 
+ = {{ | inc, aligned | 
+ = for ({variable} = {start}; {variable} >= {end}; {variable} -= {step}) {{ | ~inc, ~aligned | 
+ = for ({variable} = {start}; {variable} >= {end}; {variable} -= {step}) | ~inc, aligned | 
+ = {{ | ~inc, aligned | 
+ = -->BLOCK | | 1
+ = }
+
+[Input]
+Text = {variable} = std::stoll(fgLine(std::cin)); | integer
+ = {variable} = std::stod(fgLine(std::cin)); | real
+ = {variable} = fgBool(fgLine(std::cin)); | boolean
+ = {variable} = fgLine(std::cin); | string
+
+[Read]
+Text = {variable} = std::stoll(fgLine(fgIn)); | integer
+ = {variable} = std::stod(fgLine(fgIn)); | real
+ = {variable} = fgBool(fgLine(fgIn)); | boolean
+ = {variable} = fgLine(fgIn); | string
+
+[Output]
+Text = std::cout << fgText({expression}) << std::endl; | newline
+ = std::cout << fgText({expression}); | ~newline
+
+[Open]
+Text = fgIn.open({expression}); | read
+ = fgOut.open({expression}); | write
+
+[Close]
+Text = fgIn.close(); | read
+ = fgOut.close(); | write
+
+[Write]
+Text = fgOut << fgText({expression}) << std::endl;
+
+[Forward]
+Text = fgForward({expression}, false); | up
+ = fgForward({expression}, true); | down
+
+[Turn]
+Text = fgAngle += {expression}; | left
+ = fgAngle -= {expression}; | right
+
+[Pen]
+Text = fgColor = "{color-hex}";
+
+[Home]
+Text = fgHome();
+
+[Clear]
+Text = fgLines.clear();
+ = fgHome();
+ = fgSVG();

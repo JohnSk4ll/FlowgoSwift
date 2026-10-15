@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <style>:root {--cyan: #5289AA;}
+    @media (prefers-color-scheme: dark) {:root {--cyan: #7FB7D6;}}</style>
+  <path d="M 4 25 C 1 20 2 12 7 7 C 12 2 20 2 25 7 C 30 12 31 20 28 25 Z" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 16 6 V 9 M 7 10 L 9 12 M 25 10 L 23 12 M 5 19 H 8 M 27 19 H 24 M 16 21 L 23 12" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="16" cy="21" r="2" fill="var(--cyan)" stroke="none" stroke-width="1.5"/>
+</svg>

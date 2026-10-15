@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <style>:root {--green-fill: #65C58B; --green-edge: #3A5A48;}
+    @media (prefers-color-scheme: dark) {:root {--green-fill: #65C58B; --green-edge: #9ADBAB;}}</style>
+  <path d="M 5 3 L 29 16 L 5 29 Z" fill="var(--green-fill)" stroke="var(--green-edge)" stroke-width="1.5"/>
+</svg>

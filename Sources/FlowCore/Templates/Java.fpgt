@@ -1,0 +1,530 @@
+[Language]
+Name = Java
+Extension = java
+Indent = 4
+Keywords = class, def, return, for, if, while, int, float, double, long, boolean, bool, true, false, public, static, void, main, import, std
+Conflicts = fgInput, fgIn, fgOut, fgRandom, fgText, fgBool, fgFixed, fgX, fgY, fgAngle, fgColor, fgLines, fgSVG, fgForward, fgHome, fgEOF, draw
+Options = aligned
+
+[Types]
+Integer = Long
+Real = Double
+Boolean = Boolean
+String = String
+None = void
+
+[Function ID]
+Convention = camel
+Normal = {name}
+Conflict = user_{name}
+
+[Variable ID]
+Convention = camel
+Normal = {name}
+Conflict = user_{name}
+
+[String Literal]
+Text = "{characters}"
+Replace Char 1 = "
+Replace By 1 = \"
+Replace Char 2 = \
+Replace By 2 = \\
+
+[Integer Literal]
+Text = {integral}L
+
+[Real Literal]
+Text = {integral}.{fractional}
+
+[Boolean Literal]
+true = true
+false = false
+
+[Variable Access]
+Precedence = 100
+Text = {name} | ~subscript, target
+ = fgValue({name}) | ~subscript, ~target
+ = {name}[Math.toIntExact({subscript})] | subscript, target
+ = fgValue({name}[Math.toIntExact({subscript})]) | subscript, ~target
+
+[Or]
+Precedence = 1
+Needed 1 = 1
+Needed 2 = 2
+Text = {1} {pipe} {2}
+
+[And]
+Precedence = 2
+Needed 1 = 2
+Needed 2 = 3
+Text = {1} & {2}
+
+[Equals]
+Precedence = 4
+Needed 1 = 4
+Needed 2 = 5
+Text = java.util.Objects.equals({1}, {2}) | string-string
+ = ((Number) ({1})).longValue() == ((Number) ({2})).longValue() | integer-integer
+ = ((Number) ({1})).doubleValue() == ((Number) ({2})).doubleValue() | integer-real
+ = ((Number) ({1})).doubleValue() == ((Number) ({2})).doubleValue() | real-integer
+ = ((Number) ({1})).doubleValue() == ((Number) ({2})).doubleValue() | real-real
+ = ((boolean) ({1})) == ((boolean) ({2})) | boolean-boolean
+
+[Not Equals]
+Precedence = 4
+Needed 1 = 4
+Needed 2 = 5
+Text = !java.util.Objects.equals({1}, {2}) | string-string
+ = ((Number) ({1})).longValue() != ((Number) ({2})).longValue() | integer-integer
+ = ((Number) ({1})).doubleValue() != ((Number) ({2})).doubleValue() | integer-real
+ = ((Number) ({1})).doubleValue() != ((Number) ({2})).doubleValue() | real-integer
+ = ((Number) ({1})).doubleValue() != ((Number) ({2})).doubleValue() | real-real
+ = ((boolean) ({1})) != ((boolean) ({2})) | boolean-boolean
+
+[Less Than]
+Precedence = 4
+Needed 1 = 4
+Needed 2 = 5
+Text = {1}.compareTo({2}) < 0 | string-string
+ = {1} < {2} | ~string-string
+
+[Less Equal Than]
+Precedence = 4
+Needed 1 = 4
+Needed 2 = 5
+Text = {1}.compareTo({2}) <= 0 | string-string
+ = {1} <= {2} | ~string-string
+
+[Greater Than]
+Precedence = 4
+Needed 1 = 4
+Needed 2 = 5
+Text = {1}.compareTo({2}) > 0 | string-string
+ = {1} > {2} | ~string-string
+
+[Greater Equal Than]
+Precedence = 4
+Needed 1 = 4
+Needed 2 = 5
+Text = {1}.compareTo({2}) >= 0 | string-string
+ = {1} >= {2} | ~string-string
+
+[Add]
+Precedence = 5
+Needed 1 = 5
+Needed 2 = 6
+Text = {1} + {2}
+
+[Subtract]
+Precedence = 5
+Needed 1 = 5
+Needed 2 = 6
+Text = {1} - {2}
+
+[Multiply]
+Precedence = 6
+Needed 1 = 6
+Needed 2 = 7
+Text = {1} * {2}
+
+[Divide]
+Precedence = 6
+Needed 1 = 6
+Needed 2 = 7
+Text = {1} / {2}
+Cast 1 = real | integer-integer
+
+[Modulus]
+Precedence = 6
+Needed 1 = 6
+Needed 2 = 7
+Text = {1} % {2}
+
+[Concatenate]
+Precedence = 100
+Text = fgText({1}) + fgText({2})
+Type = string
+
+[Power]
+Precedence = 100
+Text = Math.pow({1}, {2})
+
+[Not]
+Precedence = 7
+Needed 1 = 8
+Text = !{1}
+
+[Negate]
+Precedence = 7
+Needed 1 = 8
+Text = -{1}
+
+[Cast]
+Precedence = 100
+Needed = 0
+Text = ((Number) ({expression})).doubleValue() | integer-to-real
+ = fgText({expression}) | integer-to-string
+ = ((Number) ({expression})).booleanValue() | integer-to-boolean
+ = ((Number) ({expression})).longValue() | real-to-integer
+ = fgText({expression}) | real-to-string
+ = ((Number) ({expression})).booleanValue() | real-to-boolean
+ = Long.parseLong({expression}) | string-to-integer
+ = Double.parseDouble({expression}) | string-to-real
+ = fgBool({expression}) | string-to-boolean
+ = ((Number) ({expression})).longValue() | boolean-to-integer
+ = ((Number) ({expression})).doubleValue() | boolean-to-real
+ = fgText({expression}) | boolean-to-string
+
+[Abs]
+Precedence = 100
+Text = Math.abs({1})
+
+[Sqrt]
+Precedence = 100
+Text = Math.sqrt({1})
+
+[Sin]
+Precedence = 100
+Text = Math.sin({1})
+
+[Cos]
+Precedence = 100
+Text = Math.cos({1})
+
+[Tan]
+Precedence = 100
+Text = Math.tan({1})
+
+[ArcSin]
+Precedence = 100
+Text = Math.asin({1})
+
+[ArcCos]
+Precedence = 100
+Text = Math.acos({1})
+
+[ArcTan]
+Precedence = 100
+Text = Math.atan({1})
+
+[Log]
+Precedence = 100
+Text = Math.log({1})
+
+[Log10]
+Precedence = 100
+Text = Math.log10({1})
+
+[Sinh]
+Precedence = 100
+Text = Math.sinh({1})
+
+[Cosh]
+Precedence = 100
+Text = Math.cosh({1})
+
+[Tanh]
+Precedence = 100
+Text = Math.tanh({1})
+
+[Floor]
+Precedence = 100
+Text = Math.floor({1})
+
+[Ceil]
+Precedence = 100
+Text = Math.ceil({1})
+
+[Exp]
+Precedence = 100
+Text = Math.exp({1})
+
+[ArcSinh]
+Precedence = 100
+Text = Math.log({1} + Math.sqrt({1} * {1} + 1))
+
+[ArcCosh]
+Precedence = 100
+Text = Math.log({1} + Math.sqrt({1} * {1} - 1))
+
+[ArcTanh]
+Precedence = 100
+Text = (0.5 * Math.log((1 + {1}) / (1 - {1})))
+
+[Pi]
+Precedence = 100
+Text = Math.PI
+Needed 1 = 100
+Needed 2 = 0
+
+[LF]
+Precedence = 100
+Text = "\n"
+Needed 1 = 100
+Needed 2 = 0
+
+[Len]
+Precedence = 100
+Text = (long) {1}.length()
+Needed 1 = 100
+Needed 2 = 0
+
+[Size]
+Precedence = 100
+Text = (long) {1}.length
+Needed 1 = 100
+Needed 2 = 0
+
+[Char]
+Precedence = 100
+Text = String.valueOf({1}.charAt(Math.toIntExact({2})))
+Needed 1 = 100
+Needed 2 = 0
+
+[ToChar]
+Precedence = 100
+Text = String.valueOf((char) Math.toIntExact({1}))
+Needed 1 = 100
+Needed 2 = 0
+
+[ToCode]
+Precedence = 100
+Text = (long) {1}.charAt(0)
+Needed 1 = 100
+Needed 2 = 0
+
+[Int]
+Precedence = 100
+Text = ((Number) ({1})).longValue()
+Needed 1 = 100
+Needed 2 = 0
+
+[ToInteger]
+Precedence = 100
+Text = (long) Double.parseDouble({1})
+Needed 1 = 100
+Needed 2 = 0
+
+[ToReal]
+Precedence = 100
+Text = Double.parseDouble({1})
+Needed 1 = 100
+Needed 2 = 0
+
+[ToString]
+Precedence = 100
+Text = fgText({1})
+Needed 1 = 100
+Needed 2 = 0
+
+[ToFixed]
+Precedence = 100
+Text = fgFixed({1}, {2})
+Needed 1 = 100
+Needed 2 = 0
+
+[Sgn]
+Precedence = 100
+Text = (long) Math.signum({1})
+Needed 1 = 100
+Needed 2 = 0
+
+[Random]
+Precedence = 100
+Text = fgRandom.nextLong((long) ({1}))
+Needed 1 = 100
+Needed 2 = 0
+
+[EOF]
+Precedence = 100
+Text = (fgIn == null {pipe}{pipe} !fgIn.hasNextLine())
+Needed 1 = 100
+Needed 2 = 0
+
+[TurtleX]
+Precedence = 100
+Text = fgX
+Needed 1 = 100
+Needed 2 = 0
+
+[TurtleY]
+Precedence = 100
+Text = (-fgY)
+Needed 1 = 100
+Needed 2 = 0
+
+[Function Call]
+Precedence = 100
+Text = {name}({arguments})
+
+[Argument]
+Separator = ,{space}
+Text = {expression}
+Cast = integer | real, integer-parameter
+ = real | integer, real-parameter
+
+[Program]
+Text = import java.util.*;
+ = import java.io.*;
+ = class Program {{ | ~aligned | 
+ = class Program | aligned | 
+ = {{ | aligned | 
+ = static final Scanner fgInput = new Scanner(System.in); | | 1
+ = static Scanner fgIn; | | 1
+ = static PrintWriter fgOut; | | 1
+ = static final Random fgRandom = new Random(); | | 1
+ = static <T> T fgValue(T value) {{ return Objects.requireNonNull(value, "Uninitialized variable"); } | | 1
+ = static String fgText(Object value) {{ | | 1
+ = if (value instanceof Boolean) return ((Boolean)value) ? "True" : "False"; | | 2
+ = if (value instanceof Double && ((Double)value) % 1 == 0) return String.format(java.util.Locale.ROOT, "%.0f", (Double)value); | | 2
+ = return String.valueOf(value); | | 2
+ = } | | 1
+ = static boolean fgBool(String value) {{ | | 1
+ = if (!value.equalsIgnoreCase("true") && !value.equalsIgnoreCase("false")) throw new IllegalArgumentException("Enter True or False"); | | 2
+ = return Boolean.parseBoolean(value); | | 2
+ = } | | 1
+ = static String fgFixed(double value, long digits) {{ return String.format(java.util.Locale.ROOT, "%." + digits + "f", value); } | | 1
+ = static double fgX = 0, fgY = 0, fgAngle = 90; | | 1
+ = static String fgColor = "#101010"; | | 1
+ = static ArrayList<String> fgLines = new ArrayList<>(); | | 1
+ = static void fgSVG() throws IOException {{ | | 1
+ = try (PrintWriter svg = new PrintWriter("turtle.svg", "UTF-8")) {{ | | 2
+ = svg.println("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-1000 -1000 2000 2000\">"); | | 3
+ = for (String line : fgLines) svg.println(line); | | 3
+ = svg.println("</svg>"); | | 3
+ = } | | 2
+ = } | | 1
+ = static void fgForward(double distance, boolean pen) throws IOException {{ | | 1
+ = double x = Math.max(-1000000, Math.min(1000000, fgX + Math.cos(Math.toRadians(fgAngle)) * distance)); | | 2
+ = double y = Math.max(-1000000, Math.min(1000000, fgY - Math.sin(Math.toRadians(fgAngle)) * distance)); | | 2
+ = if (pen) fgLines.add("<line x1=\"" + fgX + "\" y1=\"" + fgY + "\" x2=\"" + x + "\" y2=\"" + y + "\" stroke=\"" + fgColor + "\"/>"); | | 2
+ = fgX = x; fgY = y; fgSVG(); | | 2
+ = } | | 1
+ = static void fgHome() {{ fgX = fgY = 0; fgAngle = 90; } | | 1
+ = -->MAIN | | 1
+ = -->FUNCTIONS | | 1
+ = }
+
+[Main]
+Text = public static void main(String[] args) throws Exception {{ | ~aligned | 
+ = public static void main(String[] args) throws Exception | aligned | 
+ = {{ | aligned | 
+ = -->BLOCK | | 1
+ = }
+
+[Parameter]
+Separator = ,{space}
+Text = {type} {name} | ~array
+ = {type}[] {name} | array
+
+[Function]
+Text = 
+ = static {type} {name}({parameters}) throws Exception {{ | ~aligned | 
+ = static {type} {name}({parameters}) throws Exception | aligned | 
+ = {{ | aligned | 
+ = -->BLOCK | | 1
+ = return {return}; | return | 1
+ = }
+
+[Function Header]
+Text = {type} {name}({parameters});
+
+[Assign]
+Text = {variable} = {expression};
+Cast = integer | integer-variable, real-expression
+ = real | real-variable, integer-expression
+
+[Call]
+Text = {name}({arguments});
+
+[Comment]
+Text = // {text}
+
+[Declare]
+Name Mode = singular
+Text = {type} {name} = null; | ~array
+ = {type}[] {name} = new {type}[Math.toIntExact({size})]; | array
+
+[If]
+Text = if ({condition}) {{ | ~aligned | 
+ = if ({condition}) | aligned | 
+ = {{ | aligned | 
+ = -->TRUEBLOCK | | 1
+ = } else {{ | else, ~aligned | 
+ = } | else, aligned | 
+ = else | else, aligned | 
+ = {{ | else, aligned | 
+ = -->FALSEBLOCK | else | 1
+ = }
+
+[While]
+Text = while ({condition}) {{ | ~aligned | 
+ = while ({condition}) | aligned | 
+ = {{ | aligned | 
+ = -->BLOCK | | 1
+ = }
+
+[Do]
+Text = do {{ | ~aligned | 
+ = do | aligned | 
+ = {{ | aligned | 
+ = -->BLOCK | | 1
+ = } while ({condition});
+
+[For]
+Text = for ({variable} = {start}; {variable} <= {end}; {variable} += {step}) {{ | inc, ~aligned | 
+ = for ({variable} = {start}; {variable} <= {end}; {variable} += {step}) | inc, aligned | 
+ = {{ | inc, aligned | 
+ = for ({variable} = {start}; {variable} >= {end}; {variable} -= {step}) {{ | ~inc, ~aligned | 
+ = for ({variable} = {start}; {variable} >= {end}; {variable} -= {step}) | ~inc, aligned | 
+ = {{ | ~inc, aligned | 
+ = -->BLOCK | | 1
+ = }
+
+[Input]
+Text = {variable} = Long.parseLong(fgInput.nextLine()); | integer
+ = {variable} = Double.parseDouble(fgInput.nextLine()); | real
+ = {variable} = fgBool(fgInput.nextLine()); | boolean
+ = {variable} = fgInput.nextLine(); | string
+
+[Read]
+Text = {variable} = Long.parseLong(fgIn.nextLine()); | integer
+ = {variable} = Double.parseDouble(fgIn.nextLine()); | real
+ = {variable} = fgBool(fgIn.nextLine()); | boolean
+ = {variable} = fgIn.nextLine(); | string
+
+[Output]
+Text = System.out.println(fgText({expression})); | newline
+ = System.out.print(fgText({expression})); | ~newline
+
+[Open]
+Text = fgIn = new Scanner(new File({expression}), "UTF-8"); | read
+ = fgOut = new PrintWriter({expression}, "UTF-8"); | write
+
+[Close]
+Text = fgIn.close(); | read
+ = fgIn = null; | read
+ = fgOut.close(); | write
+
+[Write]
+Text = fgOut.println(fgText({expression}));
+= fgOut.flush();
+
+[Forward]
+Text = fgForward({expression}, false); | up
+ = fgForward({expression}, true); | down
+
+[Turn]
+Text = fgAngle += {expression}; | left
+ = fgAngle -= {expression}; | right
+
+[Pen]
+Text = fgColor = "{color-hex}";
+
+[Home]
+Text = fgHome();
+
+[Clear]
+Text = fgLines.clear();
+ = fgHome();
+ = fgSVG();
